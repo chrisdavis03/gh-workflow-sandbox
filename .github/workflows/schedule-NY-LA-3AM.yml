@@ -1,8 +1,10 @@
-name: run-workflow-hourly
+name: run-workflow-regularly
 on:
   schedule: 
-  # hourly. 
-    - cron: '30 * * * *'
+  # NY - 3AM Weekdays
+    - cron: '0 8 * * 1-5'
+  # LA - 3AM Weekdays
+    - cron: '0 11 * * 1-5'
 jobs: 
   fake-job:
     runs-on: ubuntu-latest
