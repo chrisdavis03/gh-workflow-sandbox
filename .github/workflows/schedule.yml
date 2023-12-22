@@ -7,5 +7,5 @@ jobs:
   fake-job:
     runs-on: ubuntu-latest
     steps:
-      - name: farts
+      - name: test
         run: echo 'workflow ran!'
