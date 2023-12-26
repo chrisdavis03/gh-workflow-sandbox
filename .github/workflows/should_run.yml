@@ -29,5 +29,5 @@ jobs:
     steps:
       - name: print output
         env:
-          SHOULD_RUN: ${{ github.event.client_payload.needs.check_date.outputs.should_run }}
+          SHOULD_RUN: ${{ needs.check_date.outputs.should_run }}
         run: echo $SHOULD_RUN
