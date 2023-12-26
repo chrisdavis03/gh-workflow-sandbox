@@ -31,4 +31,4 @@ jobs:
         env:
           SHOULD_RUN: ${{ needs.check_date.outputs.should_run }}
           TEST_VAR: "test this out"
-        run: echo "$TEST_VAR"
+        run: echo "Build should run\:$SHOULD_RUN"
