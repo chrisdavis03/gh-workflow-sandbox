@@ -5,6 +5,10 @@ on:
       foo:
         required: true
         type: string
+    outputs:
+      should_run:
+        description: "Has there been a commit to main branch today?"
+        value: ${{ jobs.check_date.outputs.should_run }}
 
 jobs:
   check_date:
@@ -21,14 +25,13 @@ jobs:
         id: should_run
         continue-on-error: true
         if: ${{ github.event_name == 'schedule' }}
-        run: test -z $(git rev-list --after="24 hours" --max-count=1  ${{ github.sha }}) || echo "should_run=false" >> $GITHUB_OUTPUT
+        run: test -z $(git rev-list --after="24 hours" --max-count=1  ${{ github.sha }}) || echo "should_run=true" >> $GITHUB_OUTPUT
 
-  job2:
+  echo_should_run:
     runs-on: ubuntu-latest
     needs: check_date
     steps:
       - name: print output
         env:
           SHOULD_RUN: ${{ needs.check_date.outputs.should_run }}
-          TEST_VAR: "test this out"
-        run: echo "Build should run\:$SHOULD_RUN"
+        run: echo "$SHOULD_RUN"
