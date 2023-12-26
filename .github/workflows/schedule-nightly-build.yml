@@ -1,0 +1,17 @@
+name: nightly-build
+on:
+  schedule:
+    # hourly.
+    - cron: "0,30 * * * *"
+
+jobs:
+  fake_job:
+    name: first job
+    runs-on: ubuntu-latest
+    steps:
+      - name: fake step
+        run: echo 'fake step'
+  call-check-should-run:
+    uses: ./.github/workflows/should_run.yml
+    with:
+      foo: "whiz"
