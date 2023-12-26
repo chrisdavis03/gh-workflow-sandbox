@@ -18,3 +18,11 @@ jobs:
         env:
           SHOULD_RUN: ${{ needs.call-check-should-run.outputs.should_run }}
         run: echo "$SHOULD_RUN"
+
+  build_condintional:
+    runs-on: ubuntu-latest
+    needs: call-check-should-run
+    steps:
+      - name: nightly build
+        if: ${{ needs.call-check-should-run.outputs.should_run }} == true
+        run: echo "run nightly build"
