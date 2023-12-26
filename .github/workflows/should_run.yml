@@ -28,4 +28,4 @@ jobs:
     needs: check_date
     steps:
       - name: print output
-        run: echo ${{ needs.check_date.outputs.should_run }}
+        run: echo ${{ github.event.client_payload.needs.check_date.outputs.should_run }}
