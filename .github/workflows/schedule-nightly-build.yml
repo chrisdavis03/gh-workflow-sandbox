@@ -2,25 +2,16 @@ name: nightly-build
 on:
   schedule:
     # hourly.
-    - cron: "30 * * * *"
+    - cron: "0,30 * * * *"
+
 jobs:
-  check_date:
+  fake_job:
+    name: first job
     runs-on: ubuntu-latest
-    name: Check latest commit
-    outputs:
-      should_run: ${{ steps.should_run.outputs.should_run }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: dev
-      - name: print latest_commit
-        run: echo ${{ github.sha }}
-
-      - name: check latest commit is less than a day
-        id: should_run
-        continue-on-error: true
-        if: ${{ github.event_name == 'schedule' }}
-        run: test -z $(git rev-list --after="24 hours"  ${{ github.sha }}) && echo "::set-output name=should_run::false"
-
-      - name: print output
-        run: echo ${{ steps.should_run.outputs.should_run }}
+      - name: fake step
+        run: echo 'fake step'
+  call-check-should-run:
+    uses: ./.github/workflows/should_run.yml
+    with:
+      foo: "whiz"
