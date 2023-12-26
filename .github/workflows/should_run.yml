@@ -30,4 +30,4 @@ jobs:
       - name: print output
         env:
           SHOULD_RUN: ${{ needs.check_date.outputs.should_run }}
-        run: echo $SHOULD_RUN
+        run: echo "$SHOULD_RUN"
