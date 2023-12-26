@@ -2,7 +2,7 @@ name: nightly-build
 on:
   schedule:
     # hourly.
-    - cron: "0,30 * * * *"
+    - cron: "*/15 * * * *"
 
 jobs:
   fake_job:
