@@ -5,6 +5,10 @@ on:
       should_run:
         required: true
         type: boolean
+      slack_webhook:
+        required: true
+        type: string
+
 jobs:
   slack_notification:
     runs-on: ubuntu-latest
@@ -19,4 +23,4 @@ jobs:
           SLACK_TITLE: "CI Result :rocket:"
           SLACK_MESSAGE: "This is a message"
           SLACK_USERNAME: CI-Bot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
