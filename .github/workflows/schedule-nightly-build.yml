@@ -31,4 +31,4 @@ jobs:
     uses: ./.github/workflows/slack-notifications.yml
     with:
       should_run: true
-      slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+    secrets: inherit

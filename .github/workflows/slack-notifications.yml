@@ -5,9 +5,6 @@ on:
       should_run:
         required: true
         type: boolean
-      slack_webhook:
-        required: true
-        type: string
 
 jobs:
   slack_notification:
