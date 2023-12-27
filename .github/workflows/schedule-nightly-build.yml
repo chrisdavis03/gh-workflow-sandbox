@@ -26,3 +26,8 @@ jobs:
       - name: nightly build
         if: ${{ needs.call-check-should-run.outputs.should_run }} == true
         run: echo "run nightly build"
+
+  call-notify-slack:
+    uses: ./.github/workflows/slack-notifications.yml
+    with:
+      should_run: true
