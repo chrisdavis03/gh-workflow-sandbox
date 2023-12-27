@@ -20,4 +20,4 @@ jobs:
           SLACK_TITLE: "CI Result :rocket:"
           SLACK_MESSAGE: "This is a message"
           SLACK_USERNAME: CI-Bot
-          SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
