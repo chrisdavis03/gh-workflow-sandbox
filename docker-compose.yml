@@ -1,0 +1,10 @@
+version: "3"
+services:
+  api:
+    image: backend:${VERSION}
+    build:
+      context: .
+      dockerfile: ./compose/Dockerfile
+    ports:
+      - "8000:8000"
+    command: "/start"
