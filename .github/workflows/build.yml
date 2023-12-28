@@ -28,5 +28,5 @@ jobs:
 
       - name: publish to GHCR
         run: |
-          - echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u chrisdavis03 --password-stdin
+          - echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.repository }} --password-stdin
           - docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
