@@ -38,5 +38,4 @@ jobs:
     with:
       image-name-api: "backend-api"
       version: "v1.0.1"
-    secrets:
-      ghcr-token: ${{ secrets.GITHUB_TOKEN }}
+    secrets: inherit
