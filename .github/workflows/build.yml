@@ -27,6 +27,8 @@ jobs:
         run: docker compose build
 
       - name: publish to GHCR
+        env:
+          GHCR_TOKEN: ${{ secrets.ghcr-token }}
         run: |
-          - echo ${{ secrets.ghcr-token }} | docker login ghcr.io -u chrisdavis03 --password-stdin
+          - echo $GHCR_TOKEN | docker login ghcr.io -u chrisdavis03 --password-stdin
           - docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
