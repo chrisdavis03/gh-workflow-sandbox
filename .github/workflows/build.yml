@@ -1,8 +1,11 @@
-name: build
+name: build-publish
 on:
   workflow_call:
     inputs:
       version:
+        required: true
+        type: string
+      image-name-api:
         required: true
         type: string
 
@@ -16,5 +19,11 @@ jobs:
 
       - name: build with compose
         env:
-          VERSION: v1.0.0
+          IMAGE_NAME_API: ${{ inputs.image-name-api }}
+          VERSION: ${{ inputs.version }}
         run: docker compose build
+
+      - name: publish to GHCR
+        run: |
+          - echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u chrisdavis03 --password-stdin
+          - docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
