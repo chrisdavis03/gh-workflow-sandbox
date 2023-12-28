@@ -26,7 +26,7 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: docker compose build
 
+      - name: login to Github Package Repository
+        run: echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.repository }} --password-stdin
       - name: publish to GHCR
-        run: |
-          - echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.repository }} --password-stdin
-          - docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
+        run: docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
