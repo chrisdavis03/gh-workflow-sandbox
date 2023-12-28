@@ -1,7 +1,7 @@
 version: "3"
 services:
   api:
-    image: ${IMAGE_API_NAME}:${VERSION}
+    image: ${IMAGE_NAME_API}:${VERSION}
     build:
       context: .
       dockerfile: ./compose/Dockerfile
