@@ -29,3 +29,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GH_REPO_TOKEN }}
+
+      - name: publish to GHCR
+        run: docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
