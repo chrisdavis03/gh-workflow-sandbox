@@ -30,7 +30,7 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GH_REPO_TOKEN }}
 
     #   - name: login to Github Package Repository
     #     run: echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
