@@ -36,6 +36,7 @@ jobs:
   call-build-workflow:
     uses: ./.github/workflows/build.yml
     with:
+      registry: "ghcr.io"
       image-name-api: "backend-api"
       version: "v1.0.1"
     secrets: inherit
