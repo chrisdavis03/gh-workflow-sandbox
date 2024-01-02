@@ -25,8 +25,14 @@ jobs:
           IMAGE_NAME_API: ${{ inputs.image-name-api }}
           VERSION: ${{ inputs.version }}
         run: docker compose build
+      - name: Log in to the Container registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: login to Github Package Repository
-        run: echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
-      - name: publish to GHCR
-        run: docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
+    #   - name: login to Github Package Repository
+    #     run: echo ${{ github.token }} | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+    #   - name: publish to GHCR
+    #     run: docker push ghcr.io/chrisdavis03/${{ inputs.image-name-api}}:${{ inputs.version }}
