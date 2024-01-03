@@ -41,6 +41,7 @@ jobs:
 
   call-semantic-version:
     uses: ./.github/workflows/sematic-release.yml
+    secrets: inherit
 
   # call-build-workflow:
   #   uses: ./.github/workflows/build.yml
