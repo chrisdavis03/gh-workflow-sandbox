@@ -1,18 +1,23 @@
 name: notify-slack
 on:
   workflow_call:
+    inputs:
+      version:
+        type: string
+        required: true
+
 jobs:
   slack_notification:
     runs-on: ubuntu-latest
     steps:
-      - name: Slack Notification
-        # if: success() || failure()
+      - name: Slack Release Notification
+        if: success() || failure()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_CHANNEL: web-pr-notifications
           SLACK_COLOR: ${{ job.status }} # or a specific color like 'good' or '#ff00ff'
           SLACK_ICON: https://www.jenkins.io/images/logos/brno/brno.png?size=30
           SLACK_TITLE: "CI Result :rocket:"
-          SLACK_MESSAGE: "This is a message"
+          SLACK_MESSAGE: "v ${{ inputs.version }}"
           SLACK_USERNAME: CI-Bot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   workflow_call:
     outputs:
+      released:
+        description: Was a release created?
+        value: ${{ jobs.release.outputs.released }}
       version:
         description: Output the generated version number
         value: ${{ jobs.release.outputs.version }}
@@ -21,7 +24,8 @@ jobs:
       contents: write
 
     outputs:
-      version: $
+      released: ${{ steps.release.outputs.released }}
+      version: ${{ steps.release.outputs.version }}
 
     steps:
       - uses: actions/checkout@v3
@@ -32,9 +36,3 @@ jobs:
         uses: python-semantic-release/python-semantic-release@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: echo version
-        env:
-          VERSION: ${{ steps.release.outputs.version }}
-
-        run: echo "$VERSION"

@@ -2,11 +2,16 @@ name: nightly-build
 on:
   schedule:
     # hourly.
-    - cron: "0 18 * * *"
+    - cron: "*/10 * * * *"
 
 jobs:
   call-check-should-run:
     uses: ./.github/workflows/should_run.yml
+
+  call-release:
+    uses: ./.github/workflows/release.yml
+    needs: call-check-should-run
+    if: ${{ needs.call-check-should-run.outputs.should_run }} == true
 
   # echo_should_run:
   #   runs-on: ubuntu-latest
@@ -17,34 +22,30 @@ jobs:
   #         SHOULD_RUN: ${{ needs.call-check-should-run.outputs.should_run }}
   #       run: echo "$SHOULD_RUN"
 
-  build_condintional:
-    runs-on: ubuntu-latest
-    needs: call-check-should-run
-    steps:
-      - name: nightly build
-        if: ${{ needs.call-check-should-run.outputs.should_run }} == true
-        run: echo "run nightly build"
+  # build_condintional:
+  #   runs-on: ubuntu-latest
+  #   needs: call-check-should-run
+  #   steps:
+  #     - name: nightly build
+  #       if: ${{ needs.call-check-should-run.outputs.should_run }} == true
+  #       run: echo "run nightly build"
 
   call-notify-slack:
     uses: ./.github/workflows/slack-notifications.yml
+    needs: call-release
     with:
-      should_run: true
+      version: ${{ needs.call-release.outputs.version }}
+    if: ${{ needs.call-release.outputs.released }} == true
     secrets: inherit
 
-  # increment-patch-version:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: echo-patch-version
-  #       run: echo "${{ vars.PATCH_VERSION }}"
-
-  # call-semantic-version:
-  #   uses: ./.github/workflows/semantic-release.yml
-  #   secrets: inherit
-
-  # call-build-workflow:7
-  #   uses: ./.github/workflows/build.yml
-  #   with:
-  #     registry: "ghcr.io"
-  #     image-name-api: "backend-api"
-  #     version: "v1.0.1"
-  #   secrets: inherit
+  call-build-workflow:
+    needs:
+      - call-check-should-run
+      - call-release
+    uses: ./.github/workflows/build.yml
+    if: (${{ needs.call-check-should-run.outputs.should_run }} == true && ${{ needs.call-release.outputs.released }})
+    with:
+      registry: "ghcr.io"
+      image-name-api: "backend-api"
+      version: ${{ needs.call-release.outputs.version }}
+    secrets: inherit
