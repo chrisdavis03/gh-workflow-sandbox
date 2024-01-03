@@ -43,7 +43,7 @@ jobs:
       - call-check-should-run
       - call-release
     uses: ./.github/workflows/build.yml
-    if: (${{ needs.call-check-should-run.outputs.should_run }} == true && ${{ needs.call-release.outputs.released }})
+    if: (${{ needs.call-check-should-run.outputs.should_run }} == 'true' && ${{ needs.call-release.outputs.released }} == 'true')
     with:
       registry: "ghcr.io"
       image-name-api: "backend-api"
