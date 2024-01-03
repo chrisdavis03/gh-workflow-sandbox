@@ -40,7 +40,7 @@ jobs:
         run: echo "${{ vars.PATCH_VERSION }}"
 
   call-semantic-version:
-    uses: ./.github/workflows/sematic-release.yml
+    uses: ./.github/workflows/semantic-release.yml
     secrets: inherit
 
   # call-build-workflow:
