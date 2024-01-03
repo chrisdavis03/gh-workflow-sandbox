@@ -2,6 +2,11 @@ name: Semantic Release
 
 on:
   workflow_dispatch:
+  workflow_call:
+    outputs:
+      version:
+        description: Output the generated version number
+        value: ${{ jobs.release.outputs.version }}
 #   pull_request:
 #     branches:
 #       - main
@@ -15,11 +20,21 @@ jobs:
       id-token: write
       contents: write
 
+    outputs:
+      version: $
+
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Python Semantic Release
+        id: release
         uses: python-semantic-release/python-semantic-release@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: echo version
+        env:
+          VERSION: ${{ steps.release.outputs.version }}
+
+        run: echo "$VERSION"

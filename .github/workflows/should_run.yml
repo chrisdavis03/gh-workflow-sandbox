@@ -1,10 +1,6 @@
 name: should run
 on:
   workflow_call:
-    inputs:
-      foo:
-        required: true
-        type: string
     outputs:
       should_run:
         description: "Has there been a commit to main branch today?"

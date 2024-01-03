@@ -1,11 +1,6 @@
 name: notify-slack
 on:
   workflow_call:
-    inputs:
-      should_run:
-        required: true
-        type: boolean
-
 jobs:
   slack_notification:
     runs-on: ubuntu-latest
