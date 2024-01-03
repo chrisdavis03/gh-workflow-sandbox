@@ -36,3 +36,9 @@ jobs:
         uses: python-semantic-release/python-semantic-release@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: echo outputs
+        env:
+          RELEASED: ${{ steps.release.outputs.released }}
+          VERSION: ${{ steps.release.outputs.version }}
+        run: echo "$VERSION --- $RELEASED"
