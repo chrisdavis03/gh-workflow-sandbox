@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo-patch-version
-        run: echo "$PATCH_VERSION"
+        run: echo "${{ vars.PATCH_VERSION }}"
 
   # call-build-workflow:
   #   uses: ./.github/workflows/build.yml
