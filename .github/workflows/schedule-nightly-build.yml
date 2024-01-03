@@ -35,7 +35,7 @@ jobs:
     needs: call-release
     with:
       version: ${{ needs.call-release.outputs.version }}
-    if: ${{ needs.call-release.outputs.released }} == true
+    if: ${{ needs.call-release.outputs.released }}
     secrets: inherit
 
   call-build-workflow:
