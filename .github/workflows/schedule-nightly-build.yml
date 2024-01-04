@@ -2,7 +2,7 @@ name: nightly-build
 on:
   schedule:
     # hourly.
-    - cron: "*/10 * * * *"
+    - cron: "* 18 * * *"
 
 jobs:
   call-check-should-run:
