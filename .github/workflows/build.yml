@@ -25,6 +25,7 @@ jobs:
           REGISTRY: ${{ inputs.registry }}
           IMAGE_NAME_API: ${{ inputs.image-name-api }}
           VERSION: ${{ inputs.version }}
+          PACKAGE_REPO: ${{ github.repository }}
         run: docker compose build
 
       - name: Log in to the Container registry
@@ -35,4 +36,4 @@ jobs:
           password: ${{ secrets.GH_REPO_TOKEN }}
 
       - name: publish to GHCR
-        run: docker push ${{ inputs.registry }}/chrisdavis03/${{ github.repository}}/${{ inputs.image-name-api }}:${{ inputs.version }}
+        run: docker push ${{ inputs.registry }}/chrisdavis03/${{ github.repository }}/${{ inputs.image-name-api }}:${{ inputs.version }}

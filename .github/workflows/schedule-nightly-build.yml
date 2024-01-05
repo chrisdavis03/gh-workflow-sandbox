@@ -13,14 +13,6 @@ jobs:
     needs: call-check-should-run
     if: needs.call-check-should-run.outputs.should_run  == 'true'
 
-  build_condintional:
-    runs-on: ubuntu-latest
-    needs: call-check-should-run
-    steps:
-      - name: nightly build
-        if: needs.call-check-should-run.outputs.should_run == 'true'
-        run: echo "run nightly build"
-
   call-notify-slack:
     uses: ./.github/workflows/slack-notifications.yml
     needs: call-release
