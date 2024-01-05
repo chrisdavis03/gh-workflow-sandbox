@@ -2,7 +2,7 @@ name: nightly-build
 on:
   schedule:
     # hourly.
-    - cron: "* 18 * * *"
+    - cron: "15 * * * *"
 
 jobs:
   call-check-should-run:
@@ -11,7 +11,7 @@ jobs:
   call-release:
     uses: ./.github/workflows/release.yml
     needs: call-check-should-run
-    if: ${{ needs.call-check-should-run.outputs.should_run }} == true
+    if: ${{ needs.call-check-should-run.outputs.should_run }} == ''
 
   # echo_should_run:
   #   runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
   #   needs: call-check-should-run
   #   steps:
   #     - name: nightly build
-  #       if: ${{ needs.call-check-should-run.outputs.should_run }} == true
+  #       if: ${{ needs.call-check-should-run.outputs.should_run }} == 'true'
   #       run: echo "run nightly build"
 
   call-notify-slack:
@@ -35,7 +35,7 @@ jobs:
     needs: call-release
     with:
       version: ${{ needs.call-release.outputs.version }}
-    if: ${{ needs.call-release.outputs.released }}
+    if: ${{ needs.call-release.outputs.released }} == 'true'
     secrets: inherit
 
   call-build-workflow:
