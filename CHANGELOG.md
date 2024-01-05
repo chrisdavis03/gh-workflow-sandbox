@@ -2,7 +2,40 @@
 
 
 
+## v0.1.1 (2024-01-05)
+
+### Ci
+
+* ci: updated release wf ([`09a15df`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/09a15dfc2bf2f92f5d98d6b5a02f1f4473b5a75a))
+
+* ci: updated release wf ([`a06f557`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/a06f55713488bae49082bd7a4284c9cb456b3eb0))
+
+* ci: updated release wf ([`dd2e7a2`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/dd2e7a2a6e105199412bc006bd4e1862699ea3f6))
+
+* ci: updated release wf ([`7298223`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/7298223bb7e5235b92198e9a783b1550cdaaf945))
+
+* ci: updated release wf ([`9c3e252`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/9c3e2528a2b90b323a28158ab167da7e932dc9e0))
+
+* ci: updated release wf ([`77766b4`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/77766b46f86428b7f17f42f9dd7540b402f9cc56))
+
+* ci: updated release wf ([`38af8b1`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/38af8b1c3494935ec616a0f117c03432ae6cedb5))
+
+* ci: updated release wf ([`04503a3`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/04503a3bd60644cb21df34f4f16acc61e54a9c15))
+
+* ci: updated release wf ([`37e2dc1`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/37e2dc18033c7510c51a0e30d8c13936cae1abcd))
+
+* ci: updated release wf ([`dbf00f7`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/dbf00f72035026cb0c3b79be0653b3fb87a69ed4))
+
+### Fix
+
+* fix: updated release wf ([`d76d567`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/d76d56741b83437edbbfe763b8bb09c10a220d41))
+
+
 ## v0.1.0 (2024-01-03)
+
+### Chore
+
+* chore(release): v0.1.0 [skip ci] ([`7115d05`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/7115d05b471537dbf36bec1c58add068908f9afa))
 
 ### Feature
 
