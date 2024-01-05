@@ -2,7 +2,22 @@
 
 
 
+## v0.1.2 (2024-01-05)
+
+### Fix
+
+* fix: updated package location ([`34f607c`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/34f607c7188687eea2e4a4acf810c64b15846ed2))
+
+* fix: updated package location ([`5b8ec83`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/5b8ec8344d2e7e5428fdbbdf9d7de69bfe4ae2cf))
+
+* fix: updated release wf ([`3b8a633`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/3b8a63378ee869c6ca9cd0117f302eee5fd681d0))
+
+
 ## v0.1.1 (2024-01-05)
+
+### Chore
+
+* chore(release): v0.1.1 [skip ci] ([`9e3b8e3`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/9e3b8e35d9735c51605f8df7f2cb592f6d115ccb))
 
 ### Ci
 
