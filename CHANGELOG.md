@@ -2,7 +2,18 @@
 
 
 
+## v0.2.0 (2024-01-05)
+
+### Feature
+
+* feat: updated compose to target repo package ([`a1e4bfd`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/a1e4bfdf119e711d9f990f35cd1e152c717edc41))
+
+
 ## v0.1.2 (2024-01-05)
+
+### Chore
+
+* chore(release): v0.1.2 [skip ci] ([`3998483`](https://github.com/chrisdavis03/gh-workflow-sandbox/commit/39984835ae3a0ac66d77dcd44a1f5d52beadcabb))
 
 ### Fix
 
