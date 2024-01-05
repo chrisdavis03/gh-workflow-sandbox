@@ -13,15 +13,6 @@ jobs:
     needs: call-check-should-run
     if: needs.call-check-should-run.outputs.should_run  == 'true'
 
-  # echo_should_run:
-  #   runs-on: ubuntu-latest
-  #   needs: call-check-should-run
-  #   steps:
-  #     - name: print output
-  #       env:
-  #         SHOULD_RUN: ${{ needs.call-check-should-run.outputs.should_run }}
-  #       run: echo "$SHOULD_RUN"
-
   build_condintional:
     runs-on: ubuntu-latest
     needs: call-check-should-run

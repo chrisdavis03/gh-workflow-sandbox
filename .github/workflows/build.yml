@@ -35,4 +35,4 @@ jobs:
           password: ${{ secrets.GH_REPO_TOKEN }}
 
       - name: publish to GHCR
-        run: docker push ${{ inputs.registry }}/chrisdavis03/${{ inputs.image-name-api }}:${{ inputs.version }}
+        run: docker push ${{ inputs.registry }}/chrisdavis03/${{ github.repository}}/${{ inputs.image-name-api }}:${{ inputs.version }}
