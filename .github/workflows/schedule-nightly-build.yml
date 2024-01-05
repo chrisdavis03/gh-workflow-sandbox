@@ -11,7 +11,7 @@ jobs:
   call-release:
     uses: ./.github/workflows/release.yml
     needs: call-check-should-run
-    if: ${{ needs.call-check-should-run.outputs.should_run }} == ''
+    if: needs.call-check-should-run.outputs.should_run  == 'true'
 
   # echo_should_run:
   #   runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
     needs: call-release
     with:
       version: ${{ needs.call-release.outputs.version }}
-    if: ${{ needs.call-release.outputs.released }} == 'true'
+    if: needs.call-release.outputs.released  == 'true'
     secrets: inherit
 
   call-build-workflow:
@@ -43,7 +43,7 @@ jobs:
       - call-check-should-run
       - call-release
     uses: ./.github/workflows/build.yml
-    if: (${{ needs.call-check-should-run.outputs.should_run }} == 'true' && ${{ needs.call-release.outputs.released }} == 'true')
+    if: ( needs.call-check-should-run.outputs.should_run  == 'true' && needs.call-release.outputs.released  == 'true')
     with:
       registry: "ghcr.io"
       image-name-api: "backend-api"
