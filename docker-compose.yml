@@ -1,7 +1,7 @@
 version: "3"
 services:
   api:
-    image: $REGISTRY/chrisdavis03/${PACKAGE_REPO}/${IMAGE_NAME_API}:${VERSION}
+    image: $REGISTRY/chrisdavis03/${IMAGE_NAME_API}:${VERSION}
     build:
       context: .
       dockerfile: ./compose/Dockerfile
